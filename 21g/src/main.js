@@ -3,12 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import skrollr from 'skrollr'
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  created () {
+    // skrollr.init()
+    // console.log(skrollr)
+  },
   router,
   components: { App },
   template: '<App/>'

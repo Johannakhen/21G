@@ -7,8 +7,7 @@
         <div class="row__left">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia repudiandae tempore quisquam qui assumenda enim ea blanditiis laudantium, nisi fugit eos minima, totam quaerat sapiente eveniet, voluptates dolor. Sequi, fugit.</p>
         </div>
-        <div class="row__right">
-          <img src="https://via.placeholder.com/593/536" alt="">
+        <div class="row__right" alt="">
         </div>
       </div>
       <div class="row row__2">
@@ -23,6 +22,7 @@
   </section>
 </template>
 
+
 <style scoped>
 .concept { background-color: #f7f7f7;}
 .banner {
@@ -32,6 +32,7 @@
   width: 5%;
   background-color: #fff;
 }
+h1 { margin: 50px 0;}
 h2 {
   position: relative;
   top: 50%;

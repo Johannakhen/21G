@@ -11,13 +11,13 @@
 
 <script>
 {{#unless router}}
-import HelloWorld from './components/HelloWorld'
+import split from './components/split'
 
 {{/unless}}
 export default {
   name: 'App'{{#router}}{{else}},
   components: {
-    HelloWorld
+    split
   }{{/router}}
 }
 </script>
@@ -29,6 +29,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

@@ -5,7 +5,7 @@
             <h2>Le concept</h2>
             <div v-if="!rightPanel">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-              <button class="button" v-on:click="openLeft">Découvrir</button>
+              <button class="button" v-on:click="leftPanel= true, openPage()">Découvrir</button>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
           <h2>L'histoire</h2>
           <div v-if="!leftPanel">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <button class="button" v-on:click="openRight">Découvrir</button>
+            <button class="button" v-on:click="rightPanel= true, openPage()">Découvrir</button>
           </div>
       </div>
     </div>
@@ -25,21 +25,18 @@ export default {
   data() {
     return {
       leftPanel : false,
-      rightPanel : false,
+      rightPanel : false
     }
   },
   methods: {
-    openLeft() {
-      return this.leftPanel = true
-    },
-    openRight() {
-      return this.rightPanel = true
+    openPage() {
+      setTimeout(() => {
+        this.$router.push('/concept')
+      }, 1000)
     }
   }
 }
 </script>
-
-
 <style scoped>
 .split {
   height: 100%;

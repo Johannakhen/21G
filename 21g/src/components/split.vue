@@ -63,11 +63,11 @@ export default {
   text-align: center;
 }
 .split.open {
-  width: 90%;
+  width: 95%;
   transition: 0.5s width ease-in-out;
 }
 .split.close {
-  width: 10%;
+  width: 5%;
   transition: 0.5s width ease-in-out;
 }
 .close h2 { transform: rotate(90deg); }

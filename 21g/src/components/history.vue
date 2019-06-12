@@ -133,7 +133,7 @@ h1 {
 h2 {
   position: relative;
   top: 50%;
-  transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(-90deg);
   right: 0;
   white-space: nowrap;
 }

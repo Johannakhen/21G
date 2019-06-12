@@ -30,11 +30,11 @@ header {
   position: absolute;
   width: -webkit-fill-available;
   top: 37px;
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  margin: 0 150px;
+  margin: 0 150px !important;
   z-index: 2;
 }
 .lang {

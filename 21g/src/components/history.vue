@@ -28,6 +28,7 @@
       </div>
     </div>
     <button v-if="loaded">Composez votre parfums</button>
+    <div class="pannel"  v-on:click="leftPanel= true, openPage('concept')"> <p>Le concept</p> </div>
   </section>
 </template>
 
@@ -92,6 +93,7 @@ export default {
       inactive: false,
       inactivePrev: false,
       id: 0,
+      openPanel: false,
     }
   },
   mounted() {
@@ -203,6 +205,20 @@ h2 {
   flex: 1;
   text-align: center;
 }
+.pannel {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+  font-family: 'Athens';
+  font-size: 32px;
+  background-color: #fff;
+}
+.pannel.open {
+  height: 90%;
+  transition: 0.3s height ease-in-out;
+}
 @keyframes Gradient {
 	0% {
 		background-position: 0% 50%;
@@ -215,6 +231,8 @@ h2 {
 	}
 }
 @media screen and (max-width: 920px) {
+  section { position: relative; }
+
   h1 {
     width: 100%;
     font-size: 32px;
@@ -230,5 +248,6 @@ h2 {
   .content__header { text-align: center; }
   .content__text { padding: 0 10px; }
   .arrow { display: flex; }
+  .pannel { display: block; }
 }
 </style>

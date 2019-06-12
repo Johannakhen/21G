@@ -1,7 +1,7 @@
 <template>
   <section class="history" :class="{loading: !loaded}">
     <div class="loader" v-if="!loaded"></div>
-    <div class="banner" v-if="loaded" :class="{open : leftPanel}"  v-on:click="leftPanel= true, openPage('history')"><h2 v-if="!leftPanel">L'histoire</h2></div>
+    <div class="banner" v-if="loaded" :class="{open : leftPanel}" v-on:click="leftPanel= true, openPage('history')"><h2 v-if="!leftPanel">L'histoire</h2></div>
     <div class="title" v-if="loaded" >
       <h1 v-if="loaded">Le concept</h1>
     </div>
@@ -30,6 +30,7 @@
       </div>
     </div>
     <button v-if="loaded">Composez votre parfums</button>
+    <div class="pannel" :class="{open : openPanel}" v-on:click="openPanel= true, openPage('history')"> <p>L'histoire</p> </div>
   </section>
 </template>
 
@@ -94,6 +95,7 @@ export default {
       inactive: false,
       inactivePrev: false,
       id: 0,
+      openPanel: false,
     }
   },
   mounted() {
@@ -211,6 +213,20 @@ h2 {
   flex: 1;
   text-align: center;
 }
+.pannel {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+  font-family: 'Athens';
+  font-size: 32px;
+  background-color: #f2ffff;
+}
+.pannel.open {
+  height: 90%;
+  transition: 0.3s height ease-in-out;
+}
 @keyframes Gradient {
 	0% {
 		background-position: 0% 50%;
@@ -223,6 +239,7 @@ h2 {
 	}
 }
 @media screen and (max-width: 920px) {
+  section { position: relative; }
   h1 {
     width: 100%;
     font-size: 32px;
@@ -238,5 +255,6 @@ h2 {
   .content__header { text-align: center; }
   .content__text { padding: 0 10px; }
   .arrow { display: flex; }
+  .pannel { display: block; }
 }
 </style>

@@ -50,7 +50,7 @@ export default {
         this.$router.push(`/${el}`)
       }, 1000)
     }
-  }
+  },
 }
 </script>
 <style scoped>
@@ -70,7 +70,7 @@ h2 {
   top: 0;
   overflow-x: hidden;
   overflow-y: hidden;
-  transition: 0.3s width ease-in-out;
+  transition: 0.3s width ease-in-out, 0.3s height ease-in-out ;
   color: #000;
 }
 .split img { width: 100%; object-fit: cover; transition: 0.6s opacity ease-in-out;}
@@ -91,17 +91,19 @@ h2 {
 .inner p { font-size: 19px; margin-bottom: 34px; }
 .split.open {
   width: 95%;
-  transition: 0.5s width ease-in-out;
+  transition: 0.5s width ease-in-out, 0.5s height ease-in-out ;
 }
 .split.close {
   width: 5%;
-  transition: 0.5s width ease-in-out;
+  transition: 0.5s width ease-in-out, 0.5s height ease-in-out ;
 }
+.split__left.close { background-color: #f2ffff;}
 .split__left.close h2 { transform: rotate(-90deg);  }
-.close h2 { transform: rotate(90deg); white-space: nowrap; font-size: 40px; }
+.close h2 { transform: rotate(-90deg); white-space: nowrap; font-size: 40px; }
 
 @media screen and (max-width: 920px) {
   .split { width: 100%; height: 50%; }
+  .split img { height: 100%; }
   .split__right { top: auto; bottom: 0; }
   .split:hover { width: 100%; }
   .inner { width: 420px; padding: 0 50px;}

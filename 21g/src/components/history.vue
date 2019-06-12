@@ -1,7 +1,8 @@
 <template>
   <section class="concept">
-    <div class="banner" :class="{open : leftPanel}"  v-on:click="leftPanel= true, openPage('concept')"><h2>Le Concept</h2></div>
-    <div class="wrapper">
+    <div class="loader" v-if="!loaded"><img src="https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif" alt=""></div>
+    <div class="banner" v-if="loaded" :class="{open : leftPanel}"  v-on:click="leftPanel= true, openPage('concept')"><h2>Le Concept</h2></div>
+    <div class="wrapper" v-if="loaded">
       <h1>L'histoire</h1>
       <div class="row row__1">
         <div class="row__left">
@@ -29,8 +30,14 @@
 export default {
   data() {
     return {
+      loaded : false,
       leftPanel : false
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loaded = true
+    }, 1000);
   },
   methods: {
     openPage(el) {
@@ -44,6 +51,8 @@ export default {
 
 
 <style scoped>
+.loader { width: 100vw; height: 100vh; }
+.loader img { width: 100%; height: 100%; }
 .concept { background-color: #f7f7f7;}
 .banner {
   position: fixed;

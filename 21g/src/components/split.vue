@@ -76,6 +76,7 @@ h2 {
 .split.open {
   width: 95%;
   transition: 0.5s width ease-in-out;
+  color: #000;
 }
 .split.close {
   width: 5%;

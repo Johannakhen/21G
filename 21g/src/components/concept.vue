@@ -1,6 +1,6 @@
 <template>
   <section class="concept">
-    <div class="loader" v-if="!loaded"><img src="https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif" alt=""></div>
+    <div class="loader" v-if="!loaded"><img src="https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif" alt=""></div>
     <div class="banner" v-if="loaded" :class="{open : leftPanel}"  v-on:click="leftPanel= true, openPage('history')"><h2>L'histoire</h2></div>
     <div class="wrapper" v-if="loaded">
       <h1>Le concept</h1>
@@ -51,6 +51,8 @@ export default {
 
 
 <style scoped>
+.loader { width: 100vw; height: 100vh; }
+.loader img { width: 100%; height: 100%; }
 .concept { background-color: #f7f7f7;}
 .banner {
   position: fixed;

@@ -13,6 +13,20 @@
   font-style: italic;
 }
 @font-face {
+  font-family: 'Athens';
+  src:  url('../fonts/AthensBookItalic.woff2') format('woff2'),
+        url('../fonts/AthensBookItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Athens';
+  src:  url('../fonts/AthensBook.woff2') format('woff2'),
+        url('../fonts/AthensBook.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
   font-family: 'Brown';
   src:  url('../fonts/Brown-Regular.woff2') format('woff2'),
         url('../fonts/Brown-Regular.woff') format('woff');

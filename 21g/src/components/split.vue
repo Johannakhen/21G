@@ -1,22 +1,25 @@
 <template>
   <section>
-    <div class="split split__left" :class="{open : leftPanel, close: rightPanel}">
-        <img src="../assets/img/bg-l.jpg" alt="">
+    <div class="loader" v-if="!loaded">
+      <img src="../assets/img/logo-max.svg" alt="">
+    </div>
+    <div v-if="loaded" class="split split__left" :class="{open : leftPanel, close: rightPanel}">
+        <img v-if="!rightPanel" src="../assets/img/bg-l.jpg" alt="">
         <div class="centered">
-            <h2>Le concept</h2>
+            <h2>L'histoire</h2>
             <div v-if="!rightPanel" class="inner">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-              <button class="button" v-on:click="leftPanel= true, openPage('concept')">Découvrir</button>
+              <button class="button" v-on:click="leftPanel= true, openPage('history')">Découvrir</button>
             </div>
         </div>
     </div>
-    <div class="split split__right" :class="{open : rightPanel, close: leftPanel}">
-      <img src="../assets/img/bg-r.jpg" alt="">
+    <div v-if="loaded" class="split split__right" :class="{open : rightPanel, close: leftPanel}">
+      <img v-if="!leftPanel" src="../assets/img/bg-r.jpg" alt="">
       <div class="centered">
-          <h2>L'histoire</h2>
+          <h2>Le concept</h2>
           <div v-if="!leftPanel" class="inner">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <button class="button" v-on:click="rightPanel= true, openPage('history')">Découvrir</button>
+            <button class="button" v-on:click="rightPanel= true, openPage('concept')">Découvrir</button>
           </div>
       </div>
     </div>
@@ -26,10 +29,16 @@
 export default {
   data() {
     return {
+      loaded : false,
       leftPanel : false,
       rightPanel : false,
     }
   },
+  // mounted() {
+  //   setTimeout(() => {
+  //     this.loaded = true
+  //   }, 1000);
+  // },
   methods: {
     getTop(el) {
       el.getBoundingClientRect().top
@@ -58,12 +67,15 @@ h2 {
   overflow-x: hidden;
   overflow-y: hidden;
   transition: 0.3s width ease-in-out;
+  color: #000;
 }
-.split img { object-fit: cover; transition: 0.6s opacity ease-in-out;}
-.split:hover { width: 51%; background-color: #f2efef; }
+.split img { width: 100%; object-fit: cover; transition: 0.6s opacity ease-in-out;}
+.split:hover { width: 51% }
 .split:hover img { opacity: 0; height: 0; width: 0; overflow: hidden; }
 .split__left { left: 0; color: #000; }
-.split__right { right: 0; color: #fff; }
+.split__left:hover { background-color: #f2ffff; }
+.split__right { right: 0;}
+.split__right:hover { background-color: #ffff; }
 .centered {
   position: absolute;
   top: 50%;
@@ -76,7 +88,6 @@ h2 {
 .split.open {
   width: 95%;
   transition: 0.5s width ease-in-out;
-  color: #000;
 }
 .split.close {
   width: 5%;

@@ -56,7 +56,7 @@ export default {
 .concept { background-color: #f7f7f7;}
 .banner {
   position: fixed;
-  right: 0;
+  left: 0;
   height: 100%;
   width: 5%;
   background-color: #fff;
@@ -71,7 +71,7 @@ h1 { margin-bottom: 50px;}
 h2 {
   position: relative;
   top: 50%;
-  transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(-90deg);
   right: 0;
 }
 .wrapper { max-width: 1200px; margin: 0 auto; padding: 100px 0; }

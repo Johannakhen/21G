@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Athens';
+  src:  url('../fonts/AthensLight.woff2') format('woff2'),
+        url('../fonts/AthensLight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Athens';
+  src:  url('../fonts/AthensLightItalic.woff2') format('woff2'),
+        url('../fonts/AthensLightItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Brown';
+  src:  url('../fonts/Brown-Regular.woff2') format('woff2'),
+        url('../fonts/Brown-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

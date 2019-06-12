@@ -54,14 +54,13 @@ export default {
   transition: 0.3s width ease-in-out;
   z-index: 1;
 }
-.banner.open {
-  width: 100%;
-}
+.banner.open { width: 100%; }
+.banner.open h2 { transform: translateY(-50%) rotate(0deg); }
 h1 { margin-bottom: 50px;}
 h2 {
   position: relative;
   top: 50%;
-  transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(-90deg);
   right: 0;
   white-space: nowrap;
 }

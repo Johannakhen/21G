@@ -3,8 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import './assets/css/reset.css'
+import './assets/css/font.css'
+import './assets/css/global.css'
 
 Vue.config.productionTip = false
 
@@ -12,7 +13,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   created () {
-    AOS.init()
+    // AOS.init()
   },
   router,
   components: { App },

@@ -9,12 +9,12 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia repudiandae tempore quisquam qui assumenda enim ea blanditiis laudantium, nisi fugit eos minima, totam quaerat sapiente eveniet, voluptates dolor. Sequi, fugit.</p>
         </div>
         <div class="row__right" alt="">
-          <img src="https://via.placeholder.com/447/536" data-aos="fade-in" alt="">
+          <img src="https://via.placeholder.com/447/536" loading="lazy" alt="">
         </div>
       </div>
       <div class="row row__2">
         <div class="row__left">
-          <img src="https://via.placeholder.com/447/536" data-aos="fade-in" alt="">
+          <img src="https://via.placeholder.com/447/536" loading="lazy" alt="">
         </div>
         <div class="row__right">
           <div class="row__inner">
@@ -27,8 +27,6 @@
 </template>
 
 <script>
-// import skrollr from 'skrollr';
-
 export default {
   data() {
     return {
@@ -37,9 +35,6 @@ export default {
     }
   },
   mounted() {
-    // skrollr.init({
-		//   forceHeight: false
-	  // })
     setTimeout(() => {
       this.loaded = true
     }, 1000);
@@ -69,6 +64,7 @@ export default {
 .banner.open {
   width: 100%;
 }
+.banner.open h2 { transform: translateY(-50%) rotate(0deg); }
 h1 { margin-bottom: 50px;}
 h2 {
   position: relative;
@@ -78,7 +74,7 @@ h2 {
 }
 .wrapper { max-width: 1200px; margin: 0 auto; padding: 100px 0; }
 h1 { text-align: left; }
-.row { display: flex; flex-direction: row;}
+.row { display: flex; flex-direction: row; height: 100%; }
 .row > div { flex: 1; }
 .row__left { position: relative; text-align: left; }
 .row__1 .row__left {  max-width: 440px; margin-top: 85px; }

@@ -3,7 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// import skrollr from 'skrollr'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 Vue.config.productionTip = false
 
@@ -11,8 +12,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   created () {
-    // skrollr.init()
-    // console.log(skrollr)
+    AOS.init()
   },
   router,
   components: { App },

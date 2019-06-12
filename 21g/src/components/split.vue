@@ -5,7 +5,7 @@
             <h2>Le concept</h2>
             <div v-if="!rightPanel">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-              <button class="button" v-on:click="leftPanel= true, openPage()">Découvrir</button>
+              <button class="button" v-on:click="leftPanel= true, openPage('concept')">Découvrir</button>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
           <h2>L'histoire</h2>
           <div v-if="!leftPanel">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <button class="button" v-on:click="rightPanel= true, openPage()">Découvrir</button>
+            <button class="button" v-on:click="rightPanel= true, openPage('history')">Découvrir</button>
           </div>
       </div>
     </div>
@@ -29,9 +29,9 @@ export default {
     }
   },
   methods: {
-    openPage() {
+    openPage(el) {
       setTimeout(() => {
-        this.$router.push('/concept')
+        this.$router.push(`/${el}`)
       }, 1000)
     }
   }

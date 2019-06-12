@@ -1,20 +1,19 @@
 <template>
   <section class="concept">
-    <div class="loader" v-if="!loaded"><img src="https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif" alt=""></div>
-    <div class="banner" v-if="loaded" :class="{open : leftPanel}"  v-on:click="leftPanel= true, openPage('history')"><h2>L'histoire</h2></div>
-    <div class="wrapper" v-if="loaded">
-      <h1>Le concept</h1>
+    <div class="banner" :class="{open : leftPanel}"  v-on:click="leftPanel= true, openPage('concept')"><h2>Le Concept</h2></div>
+    <div class="wrapper">
+      <h1>L'histoire</h1>
       <div class="row row__1">
         <div class="row__left">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia repudiandae tempore quisquam qui assumenda enim ea blanditiis laudantium, nisi fugit eos minima, totam quaerat sapiente eveniet, voluptates dolor. Sequi, fugit.</p>
         </div>
         <div class="row__right" alt="">
-          <img src="https://via.placeholder.com/447/536" data-aos="fade-in" alt="">
+          <img src="https://via.placeholder.com/447/536" alt="">
         </div>
       </div>
       <div class="row row__2">
         <div class="row__left">
-          <img src="https://via.placeholder.com/447/536" data-aos="fade-in" alt="">
+          <img src="https://via.placeholder.com/447/536" alt="">
         </div>
         <div class="row__right">
           <div class="row__inner">
@@ -27,22 +26,11 @@
 </template>
 
 <script>
-// import skrollr from 'skrollr';
-
 export default {
   data() {
     return {
-      loaded : false,
-      leftPanel : false,
+      leftPanel : false
     }
-  },
-  mounted() {
-    // skrollr.init({
-		//   forceHeight: false
-	  // })
-    setTimeout(() => {
-      this.loaded = true
-    }, 1000);
   },
   methods: {
     openPage(el) {
@@ -59,7 +47,7 @@ export default {
 .concept { background-color: #f7f7f7;}
 .banner {
   position: fixed;
-  right: 0;
+  left: 0;
   height: 100%;
   width: 5%;
   background-color: #fff;
@@ -75,6 +63,7 @@ h2 {
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
   right: 0;
+  white-space: nowrap;
 }
 .wrapper { max-width: 1200px; margin: 0 auto; padding: 100px 0; }
 h1 { text-align: left; }

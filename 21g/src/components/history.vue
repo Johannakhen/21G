@@ -1,6 +1,6 @@
 <template>
-  <section class="history">
-    <div class="loader" v-if="!loaded"><img src="https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif" alt=""></div>
+  <section class="history" :class="{loading: !loaded}">
+    <div class="loader" v-if="!loaded"></div>
     <div class="banner" v-if="loaded" :class="{open : leftPanel}"  v-on:click="leftPanel= true, openPage('concept')"><h2>Le Concept</h2></div>
     <h1>L'histoire</h1>
     <div class="wrapper" v-if="loaded">
@@ -107,7 +107,8 @@ export default {
 <style scoped>
 .loader { width: 100vw; height: 100vh; }
 .loader img { width: 100%; height: 100%; }
-.history { background-image:url(../assets/img/waves.jpg); background-size: cover; color: #000; padding-bottom: 200px; }
+.history { background-image:url(../assets/img/waves.jpg); background-size: cover; color: #000; padding-bottom: 200px; overflow-x: hidden; }
+.loading { animation: Gradient 15s ease infinite; }
 .banner {
   position: fixed;
   right: 0;
@@ -136,14 +137,14 @@ h2 {
   right: 0;
   white-space: nowrap;
 }
-.wrapper { height: 600px; display: flex; flex-direction: row; max-width: 1200px; margin: 0 auto; margin-bottom: 80px; box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .2); }
+.wrapper { height: 600px; display: flex; flex-direction: row; margin: 0 auto; margin-right: 5%; margin-bottom: 80px; box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .2); }
 .timeline {
   display: flex;
   flex-direction: column;
   left: 0;
   align-items: self-start;
   position: absolute;
-  width: 120px;
+  width: 100px;
   height: auto;
 }
 .timeline img { height: 100px; width: 100px; object-fit: cover; cursor: pointer; transition: 0.3s all ease-in-out; }
@@ -164,4 +165,15 @@ h2 {
 .content__text { max-width: 590px; font-size: 19px; }
 .visual { background-color: #fff; width: 30%; }
 .visual img { width: 100%; height: 100%; object-fit: cover; }
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 </style>

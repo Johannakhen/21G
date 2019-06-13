@@ -1,5 +1,5 @@
 <template>
-  <section class="history" :class="{loading: !loaded}">
+  <section class="concept" :class="{loading: !loaded}">
     <div class="loader" v-if="!loaded"></div>
     <div class="banner" v-if="loaded" :class="{open : leftPanel}" v-on:click="leftPanel= true, openPage('history')"><h2 v-if="!leftPanel">L'histoire</h2></div>
     <div class="title" v-if="loaded" >
@@ -154,7 +154,7 @@ export default {
 }
 .loader { width: 100vw; height: 100vh; }
 .loader img { width: 100%; height: 100%; }
-.history { background-image:url(../assets/img/waves-light.jpg); background-size: contain; background-position: -60px 20px; color: #000; padding-bottom: 100px; overflow-x: hidden; }
+.concept { min-height: 100vh; background-image:url(../assets/img/waves-light.jpg); background-size: contain; background-position: -60px 20px; color: #000; padding-bottom: 100px; overflow-x: hidden; }
 .loading { animation: Gradient 15s ease infinite; }
 .banner {
   position: fixed;

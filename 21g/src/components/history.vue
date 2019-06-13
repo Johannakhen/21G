@@ -139,7 +139,7 @@ export default {
 <style scoped>
 .loader { width: 100vw; height: 100vh; }
 .loader img { width: 100%; height: 100%; }
-.history { background-image:url(../assets/img/waves.jpg); background-size: cover; color: #000; padding-bottom: 100px; overflow-x: hidden; }
+.history { min-height: 100vh; background-image:url(../assets/img/waves.jpg); background-size: cover; color: #000; padding-bottom: 100px; overflow-x: hidden; }
 .loading { animation: Gradient 15s ease infinite; }
 .banner {
   position: fixed;

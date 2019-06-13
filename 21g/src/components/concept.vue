@@ -178,7 +178,7 @@ h1 {
   font-style: italic;
   text-align: left;
   padding: 95px 20px 20px 0;
-  margin-bottom: 30px;
+  margin-bottom: 70px;
   float: right;
 }
 h2 {

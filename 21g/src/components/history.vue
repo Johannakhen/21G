@@ -162,7 +162,7 @@ h1 {
   font-style: italic;
   text-align: right;
   padding: 95px 20px 20px 0;
-  margin-bottom: 30px;
+  margin-bottom: 70px;
 }
 h2 {
   position: relative;

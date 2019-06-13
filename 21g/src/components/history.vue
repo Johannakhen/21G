@@ -4,28 +4,32 @@
     <div class="banner" v-if="loaded" :class="{open : leftPanel}" v-on:click="leftPanel= true, openPage('concept')"><h2 v-if="!leftPanel">Le Concept</h2></div>
     <h1 v-if="loaded">L'histoire</h1>
     <div class="wrapper" v-if="loaded">
+      <div class="plus" v-if="is_mobile" v-on:click="showMore = true">
+        <img src="../assets/img/plus.png" alt="">
+      </div>
       <div class="timeline">
         <div class="timeline__holder" v-for="(item, index) in timeline" v-bind:key="item.id"  @mouseover.stop="hover = index" @mouseleave="hover = false"  v-on:click="active = index, id= index" >
           <img :src="item.img" alt="" :class="{active : active == index}">
           <p v-if="hover == index || active == index" :class="{active : active == index}">{{item.date}}</p>
         </div>
       </div>
-      <div class="arrow">
-        <p :class="{inactive : id == 0}" v-on:click="prev"> &#x2190; précédent</p>
-        <p :class="{inactive : inactive == true}" v-on:click="next">suivant &#x2794;</p>
-      </div>
       <div class="content">
         <img class="content__index" v-bind:src="timeline[id].url" alt="">
         <div class="content__header">
           <div>{{timeline[id].excerpt}}</div>
         </div>
-        <div class="content__text">
+        <div class="content__text" v-bind:class="{long : showMore == true}">
           <div v-html="timeline[id].text"></div>
         </div>
       </div>
       <div class="visual" v-bind:class="`visual__${id}`">
-        <img :src="timeline[id].visual" alt="">
+        <img v-if="!is_mobile" :src="timeline[id].visual" alt="">
+        <img v-if="is_mobile" :src="timeline[id].img" alt="">
       </div>
+    </div>
+     <div class="arrow">
+      <p :class="{inactive : id == 0}" v-on:click="prev(), showMore = false"> &#x2190;</p>
+      <p :class="{inactive : inactive == true}" v-on:click="next(), showMore = false">&#x2794;</p>
     </div>
     <div class="newsletter" v-if="loaded">
       <input type="text" placeholder="metstonnez@dansnosaffaires.fr">
@@ -91,6 +95,7 @@ export default {
       inactivePrev: false,
       id: 0,
       openPanel: false,
+      showMore: false,
     }
   },
   mounted() {
@@ -99,6 +104,10 @@ export default {
     }, 800);
   },
   computed: {
+    is_mobile() {
+      const isMobile = window.matchMedia("only screen and (max-width: 760px)")
+      return isMobile.matches ? true : false
+    }
   },
   methods: {
     next(){
@@ -187,9 +196,9 @@ h2 {
   width: 120px;
 }
 .timeline p.active { font-size: 20px; color: #01b2b2; right: -70px; }
-.content { position: relative; background-color: #fff; text-align: left; padding: 80px 0 50px 245px; flex: 1; }
+.content { position: relative; background-color: #fff; text-align: left; padding: 80px 0 50px 230px; flex: 1; }
 .content__header { font-size: 40px; font-family: 'Athens'; margin-bottom: 50px; }
-.content__text { max-width: 500px; font-size: 18px; }
+.content__text { max-width: 480px; font-size: 18px; }
 .content__text p { margin-bottom: 20px; }
 .content__index { position: absolute; top: -30px; right: -100px; width: 250px; z-index: 1; }
 .visual { background-color: #fff; width: 30%; }
@@ -237,6 +246,14 @@ h2 {
   height: 90%;
   transition: 0.3s height ease-in-out;
 }
+.plus {
+  background: transparent;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, 50%);
+}
 @keyframes Gradient {
 	0% {
 		background-position: 0% 50%;
@@ -261,11 +278,20 @@ h2 {
   }
   .timeline, .banner { display: none; }
   .content { padding: 10px; }
-  .wrapper { height: 100%; flex-direction: column-reverse; background-color: #fff; padding: 20px 0; margin: 0 20px 80px; }
-  .visual { margin: 0 auto; padding: 10px 0; }
-  .content__header { text-align: center; }
-  .content__text { padding: 0 10px; }
-  .arrow { display: flex; }
+  .wrapper { position: relative; height: 100%; flex-direction: column-reverse; background-color: #fff; margin: 0 20px 20px; box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .3); }
+  .visual {
+    width: 100%;
+    height: 230px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .content__index { display: none; }
+  .content__header { text-align: center; font-size: 30px; }
+  .content__text div { max-height: 100px; overflow: hidden; padding: 0 10px 20px; transition: 0.3s max-height ease-in-out; }
+  .content__text.long div { max-height: 100%; }
+  .arrow { display: flex; margin-bottom: 15px; }
+  .arrow p { font-size: 25px; }
   .pannel { display: block; }
+  .newsletter input { text-align: center; margin-bottom: 20px; }
 }
 </style>

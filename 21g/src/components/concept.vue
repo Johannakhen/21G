@@ -6,15 +6,16 @@
       <h1 v-if="loaded">Le concept</h1>
     </div>
     <div class="wrapper" v-if="loaded">
-       <div class="visual">
-        <img :src="timeline[id].visual" alt="">
+      <div class="visual" v-bind:class="`visual__${id}`">
+        <img v-if="!is_mobile" :src="timeline[id].visual" alt="">
+        <img v-if="is_mobile" :src="timeline[id].img" alt="">
       </div>
       <div class="content">
         <img class="content__index" v-bind:src="timeline[id].url" alt="">
         <div class="content__header">
           <p>{{timeline[id].excerpt}}</p>
         </div>
-        <div class="content__text">
+        <div class="content__text" v-bind:class="{long : showMore == true}">
           <div v-html="timeline[id].text"></div>
         </div>
       </div>
@@ -24,10 +25,13 @@
           <p v-if="hover == index || active == index" :class="{active : active == index}">{{item.date}}</p>
         </div>
       </div>
-      <div class="arrow">
-        <p :class="{inactive : id == 0}" v-on:click="prev"> &#x2190; précédent</p>
-        <p :class="{inactive : inactive == true}" v-on:click="next">suivant &#x2794;</p>
+      <div class="plus" v-if="is_mobile" v-on:click="showMore = true">
+        <img src="../assets/img/plus.png" alt="">
       </div>
+    </div>
+    <div class="arrow">
+      <p :class="{inactive : id == 0}" v-on:click="prev(), showMore = false"> &#x2190;</p>
+      <p :class="{inactive : inactive == true}" v-on:click="next(), showMore = false">&#x2794;</p>
     </div>
     <div class="newsletter" v-if="loaded">
       <input type="text" placeholder="metstonnez@dansnosaffaires.fr">
@@ -101,12 +105,19 @@ export default {
       inactivePrev: false,
       id: 0,
       openPanel: false,
+      showMore: false,
     }
   },
   mounted() {
     setTimeout(() => {
       this.loaded = true
     }, 800);
+  },
+  computed: {
+    is_mobile() {
+      const isMobile = window.matchMedia("only screen and (max-width: 760px)")
+      return isMobile.matches ? true : false
+    }
   },
   methods: {
     next(){
@@ -243,6 +254,14 @@ h2 {
 .newsletter input::placeholder{
   color: #898c8c;
 }
+.plus {
+  background: transparent;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, 50%);
+}
 @keyframes Gradient {
 	0% {
 		background-position: 0% 50%;
@@ -266,11 +285,21 @@ h2 {
   }
   .timeline, .banner { display: none; }
   .content { padding: 10px; }
-  .wrapper { height: 100%; flex-direction: column; background-color: #f2ffff; padding: 20px 0; margin: 0 20px 80px; }
-  .visual { margin: 0 auto; padding: 10px 0; }
-  .content__header { text-align: center; }
-  .content__text { padding: 0 10px; }
-  .arrow { display: flex; }
+  .wrapper { position: relative; height: 100%; flex-direction: column; background-color: #f2ffff; margin: 0 20px 20px; box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .3); }
+  .visual {
+    width: 100%;
+    height: 230px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .content__index { display: none; }
+  .content__header { text-align: center; font-size: 30px; }
+  .content__text div { max-height: 100px; overflow: hidden; padding: 0 10px 20px; transition: 0.3s max-height ease-in-out; }
+  .content__text.long div { max-height: 100%; }
+  .arrow { display: flex; margin-bottom: 15px; }
+  .arrow p { font-size: 25px; }
   .pannel { display: block; }
+  .newsletter input { text-align: center; margin-bottom: 20px; }
+
 }
 </style>

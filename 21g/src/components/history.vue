@@ -33,7 +33,8 @@
     </div>
     <div class="newsletter" v-if="loaded">
       <input type="text" placeholder="metstonnez@dansnosaffaires.fr">
-      <button>S’inscrire</button>
+      <button v-on:click="msg= true">S’inscrire</button>
+      <p v-if="msg">Votre inscription à été prise en compte</p>
     </div>
     <div class="pannel"  v-on:click="leftPanel= true, openPage('concept')"> <p>Le concept</p> </div>
   </section>
@@ -96,6 +97,7 @@ export default {
       id: 0,
       openPanel: false,
       showMore: false,
+      msg: false,
     }
   },
   mounted() {
@@ -239,9 +241,8 @@ h2 {
   border-bottom: 1px solid black;
   padding-bottom: 4px;
 }
-.newsletter input::placeholder{
-  color: #898c8c;
-}
+.newsletter input::placeholder{ color: #898c8c; }
+.newsletter p { margin-top: 20px; }
 .pannel.open {
   height: 90%;
   transition: 0.3s height ease-in-out;

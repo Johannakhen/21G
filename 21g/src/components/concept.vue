@@ -35,7 +35,8 @@
     </div>
     <div class="newsletter" v-if="loaded">
       <input type="text" placeholder="metstonnez@dansnosaffaires.fr">
-      <button>S’inscrire</button>
+      <button v-on:click="msg= true">S’inscrire</button>
+      <p v-if="msg">Votre inscription à été prise en compte</p>
     </div>
     <div class="pannel" :class="{open : openPanel}" v-on:click="openPanel= true, openPage('history')"> <p>L'histoire</p> </div>
   </section>
@@ -47,14 +48,22 @@ import img2 from '../assets/img/2.png'
 import img3 from '../assets/img/3.png'
 import img4 from '../assets/img/4.png'
 import img5 from '../assets/img/5.png'
+import H1 from '../assets/img/H1.png'
+import H1J from '../assets/img/H1.jpg'
+import F3 from '../assets/img/F3.jpg'
+import F4 from '../assets/img/F4.jpg'
+import L1 from '../assets/img/L1.png'
+import L1J from '../assets/img/L1.jpg'
+
+
 export default {
   data() {
     return {
       timeline : [
         {
           id: 0,
-          img: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
-          visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
+          img: H1J,
+          visual: H1,
           url: img1,
           date: 'Phase 1',
           excerpt: 'Effectuez le test de personnalité et sélectionnez votre scénario',
@@ -62,8 +71,8 @@ export default {
         },
         {
           id: 1,
-          img: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          visual: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
+          img: F3,
+          visual: F3,
           url: img2,
           date: 'Phase 2',
           excerpt: 'Découvrez les essences qui vous correspondent !',
@@ -71,8 +80,8 @@ export default {
         },
         {
           id: 2,
-          img: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
-          visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
+          img: F4,
+          visual: F4,
           url: img3,
           date: 'Phase 3',
           excerpt: 'Révélez les arômes cachées !',
@@ -80,8 +89,8 @@ export default {
         },
         {
           id: 3,
-          img: 'https://media.giphy.com/media/qKNfbNbEN5ylW/giphy.gif',
-          visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
+          img: L1J,
+          visual: L1,
           url: img4,
           date: 'Phase 4',
           excerpt: 'Recevez votre kit 21 grammes',
@@ -89,8 +98,8 @@ export default {
         },
         {
           id: 4,
-          img: 'https://media.giphy.com/media/qKNfbNbEN5ylW/giphy.gif',
-          visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
+          img: L1J,
+          visual: L1,
           url: img5,
           date: 'Phase 5',
           excerpt: 'Participez au phénomène 21 grammes et partagez votre expérience au monde entier.',
@@ -106,6 +115,7 @@ export default {
       id: 0,
       openPanel: false,
       showMore: false,
+      msg: false,
     }
   },
   mounted() {
@@ -213,12 +223,34 @@ h2 {
   transform: translateX(-20px);
 }
 .timeline p.active { font-size: 20px; color: #01b2b2; right: -25px; text-align: left; }
-.content { position: relative; background-color: #f2ffff; text-align: left; padding: 80px 200px 0 50px; flex: 1; }
+.content { position: relative; background-color: #fff; text-align: left; padding: 80px 200px 0 50px; flex: 1; }
 .content__header { font-size: 40px; font-family: 'Athens'; margin-bottom: 50px; }
 .content__text { max-width: 590px; font-size: 19px; }
 .content__index { position: absolute; top: -30px; left: -150px; width: 250px; }
 .visual { background-color: #fff; width: 30%; }
-.visual img { width: 100%; height: 100%; object-fit: cover; }
+.visual img { width: 100%; height: 100%; object-fit: cover;}
+.visual__0, .visual__3, .visual__4 { position:relative; width: 35%; }
+.visual__0 img {
+  width: auto;
+    top: -76px;
+    position: absolute;
+    left: -111px;
+    height: 668px;
+}
+.visual__3 img {
+  width: auto;
+  top: -24px;
+  position: absolute;
+  left: -147px;
+  height: 524px;
+}
+.visual__4 img {
+  width: auto;
+  top: -24px;
+  position: absolute;
+  left: -147px;
+  height: 524px;
+}
 .inactive { pointer-events: none; color: grey; }
 .arrow {
   display: none;
@@ -251,9 +283,8 @@ h2 {
   border-bottom: 1px solid black;
   padding-bottom: 4px;
 }
-.newsletter input::placeholder{
-  color: #898c8c;
-}
+.newsletter input::placeholder{ color: #898c8c; }
+.newsletter p { margin-top: 20px; }
 .plus {
   background: transparent;
   position: absolute;

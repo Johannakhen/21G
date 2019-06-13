@@ -6,21 +6,21 @@
       </svg>
     </div>
     <div v-if="loaded" class="split split__left" :class="{open : leftPanel, close: rightPanel}">
-        <img v-if="!rightPanel" src="../assets/img/bg-l.jpg" alt="">
+        <img v-if="!rightPanel" src="../assets/img/h1.gif" alt="">
         <div class="centered">
             <h2>L'histoire</h2>
             <div v-if="!rightPanel" class="inner">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p>21<strong>G</strong> veut libérer le mystérieux pouvoir du cinquième sens et propose à tous de créer son propre parfum qui correspondre à leurs différentes personnalités et désirs dans la vie.</p>
               <button class="button" v-on:click="leftPanel= true, openPage('history')">Découvrir</button>
             </div>
         </div>
     </div>
     <div v-if="loaded" class="split split__right" :class="{open : rightPanel, close: leftPanel}">
-      <img v-if="!leftPanel" src="../assets/img/bg-r.jpg" alt="">
+      <img v-if="!leftPanel" src="../assets/img/h3.gif" alt="">
       <div class="centered">
           <h2>Le concept</h2>
           <div v-if="!leftPanel" class="inner">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Vivez une expérience unique en créant votre propre parfum qui correspond au mieux aux traits de votre personnalité. Révélé votre différence, et faites éclore votre différence</p>
             <button class="button" v-on:click="rightPanel= true, openPage('concept')">Découvrir</button>
           </div>
       </div>
@@ -55,10 +55,11 @@ export default {
 </script>
 <style scoped>
 h2 {
-  font-size: 80px;
+  font-size: 70px;
   font-family: 'Athens', Helvetica;
-  font-style: italic;
-  margin-bottom: 43px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  white-space: nowrap;
 }
 .loader { background-image: url(../assets/img/waves.jpg); height: 100vh; animation: Gradient 15s ease infinite; }
 .loader svg { width: 250px; height: auto; top: 50%; position: relative; transform: translateY(-50%); }
@@ -73,10 +74,12 @@ h2 {
   transition: 0.3s width ease-in-out, 0.3s height ease-in-out ;
   color: #000;
 }
-.split img { width: 100%; object-fit: cover; transition: 0.6s opacity ease-in-out;}
+.split img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s opacity ease-in-out;}
 .split:hover { width: 51% }
 .split:hover img { opacity: 0; height: 0; width: 0; overflow: hidden; }
 .split__left { left: 0; color: #000; }
+.split__left .centered { color: #fff; }
+.split__left:hover .centered { color: #000; }
 .split__left:hover { background-color: #f2ffff; }
 .split__right { right: 0;}
 .split__right:hover { background-color: #ffff; }
@@ -87,8 +90,9 @@ h2 {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-.inner { width: 450px; }
-.inner p { font-size: 19px; margin-bottom: 34px; }
+.inner { width: 460px; }
+.inner p { font-size: 18px; margin-bottom: 25px; }
+.inner strong { font-weight: bold; }
 .split.open {
   width: 95%;
   transition: 0.5s width ease-in-out, 0.5s height ease-in-out ;

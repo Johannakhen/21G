@@ -10,12 +10,12 @@
         <img :src="timeline[id].visual" alt="">
       </div>
       <div class="content">
+        <img class="content__index" v-bind:src="timeline[id].url" alt="">
         <div class="content__header">
-          <h3>{{timeline[id].date}}</h3>
           <p>{{timeline[id].excerpt}}</p>
         </div>
         <div class="content__text">
-          <p>{{timeline[id].text}}</p>
+          <div v-html="timeline[id].text"></div>
         </div>
       </div>
       <div class="timeline">
@@ -29,12 +29,20 @@
         <p :class="{inactive : inactive == true}" v-on:click="next">suivant &#x2794;</p>
       </div>
     </div>
-    <button v-if="loaded">Composez votre parfums</button>
+    <div class="newsletter" v-if="loaded">
+      <input type="text" placeholder="metstonnez@dansnosaffaires.fr">
+      <button>S’inscrire</button>
+    </div>
     <div class="pannel" :class="{open : openPanel}" v-on:click="openPanel= true, openPage('history')"> <p>L'histoire</p> </div>
   </section>
 </template>
 
 <script>
+import img1 from '../assets/img/1.png'
+import img2 from '../assets/img/2.png'
+import img3 from '../assets/img/3.png'
+import img4 from '../assets/img/4.png'
+import img5 from '../assets/img/5.png'
 export default {
   data() {
     return {
@@ -43,49 +51,46 @@ export default {
           id: 0,
           img: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
           visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          date: '2000',
-          excerpt: 'blablabla',
-          text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum'
+          url: img1,
+          date: 'Phase 1',
+          excerpt: 'Effectuez le test de personnalité et sélectionnez votre scénario',
+          text: 'Après avoir passé notre test de personnalité élaboré et validé par des psychologues, trois scénarios vous seront proposés.</br></br> Vous devrez choisir l’un d’entre eux, dans lequel vous allez devoir réaliser des missions. Chaque scénario à sa thématique, il y aura une sélection d’image pour déterminer vos goûts personnels, des prises de photos sur votre environnement.</br></br>Choisissez la thématique sur laquelle vous êtes le plus à l’aise et laissez vous guider !</br></br>'
         },
         {
           id: 1,
           img: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
           visual: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
-          date: '2001',
-          excerpt: 'blablabla',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum incidunt magni sint doloremque dolor optio repudiandae ratione vel temporibus est officiis exercitationem, explicabo accusantium nisi nihil veritatis esse non!'
+          url: img2,
+          date: 'Phase 2',
+          excerpt: 'Découvrez les essences qui vous correspondent !',
+          text: 'Répondez aux différentes étapes de notre analyse de manière spontanée, de la sélection de couleur à l’importation d’une photo d’un intérieur qui vous plaît (le vôtre ou un de votre choix), les questions sont diverses et variées ! </br></br>L’analyse de vos réponses se basera sur nos algorithmes et en découle une composition personnalisée à votre image.'
         },
         {
           id: 2,
           img: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
           visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          date: '2002',
-          excerpt: 'blablabla',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum incidunt magni sint doloremque dolor optio repudiandae ratione vel temporibus est officiis exercitationem, explicabo accusantium nisi nihil veritatis esse non!'
+          url: img3,
+          date: 'Phase 3',
+          excerpt: 'Révélez les arômes cachées !',
+          text: 'Le résultat de cette analyse a pour but de définir une combinaison d’essences la plus sur mesure possible, dès lors qu’un des scénario sera complété, vous serez dirigé vers le fruit de cette exploration et pourrez découvrir les 2 arômes choisi pour vous parmi une gamme de 30 fragrances disponibles et inter-combinables.</br></br> Une fois vos deux senteurs révélées, mariez les une à une dans votre base alcoolisée 21 grammes, qui est l’embase de votre essence. De là votre ultime fragrance éclos et vous pouvez choisir de personnaliser votre flacon en ligne. Vous pouvez alors passer commande et recevoir votre précieux coffret d’assemblage chez vous.'
         },
         {
           id: 3,
           img: 'https://media.giphy.com/media/qKNfbNbEN5ylW/giphy.gif',
           visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          date: '2003',
-          excerpt: 'blablabla',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum incidunt magni sint doloremque dolor optio repudiandae ratione vel temporibus est officiis exercitationem, explicabo accusantium nisi nihil veritatis esse non!'
+          url: img4,
+          date: 'Phase 4',
+          excerpt: 'Recevez votre kit 21 grammes',
+          text: 'Une fois l’ensemble 21 grammes réceptionné, vous pourrez alors faire l’expérience du parfumeur en unissant le couple d’arômes choisis dans votre flacon épuré.</br></br> Pulvérisez ensuite votre parfum sur votre peau, vos cheveux, vos vêtements ou encore votre intérieur. Inspirez, profitez, évadez vous !'
         },
         {
           id: 4,
-          img: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          visual: 'https://media.giphy.com/media/qKNfbNbEN5ylW/giphy.gif',
-          date: '2004',
-          excerpt: 'blablabla',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum incidunt magni sint doloremque dolor optio repudiandae ratione vel temporibus est officiis exercitationem, explicabo accusantium nisi nihil veritatis esse non!'
-        },
-        {
-          id: 5,
-          img: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
+          img: 'https://media.giphy.com/media/qKNfbNbEN5ylW/giphy.gif',
           visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          date: '2005',
-          excerpt: 'blablabla',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum incidunt magni sint doloremque dolor optio repudiandae ratione vel temporibus est officiis exercitationem, explicabo accusantium nisi nihil veritatis esse non!'
+          url: img5,
+          date: 'Phase 5',
+          excerpt: 'Participez au phénomène 21 grammes et partagez votre expérience au monde entier.',
+          text: 'Faites découvrir à tout le monde qu’il est maintenant possible de confectionner soi-même son parfum, la brume adéquate à chaque situation de votre histoire !</br></br> Gagnez des points grâce à vos achats, convertissez les en réductions, bons plans... </br></br>Partagez votre aventure sur les réseaux sociaux tels de Facebook, Instagram… Profitez en pour devenir garant de notre marque !'
         },
       ],
       loaded : false,
@@ -132,13 +137,13 @@ export default {
 
 <style scoped>
 .title:after {
-    content: '';
-    clear: both;
-    display: block;
+  content: '';
+  clear: both;
+  display: block;
 }
 .loader { width: 100vw; height: 100vh; }
 .loader img { width: 100%; height: 100%; }
-.history { background-image:url(../assets/img/waves-light.jpg); background-size: cover; color: #000; padding-bottom: 100px; overflow-x: hidden; }
+.history { background-image:url(../assets/img/waves-light.jpg); background-size: contain; background-position: -60px 20px; color: #000; padding-bottom: 100px; overflow-x: hidden; }
 .loading { animation: Gradient 15s ease infinite; }
 .banner {
   position: fixed;
@@ -153,16 +158,16 @@ export default {
 }
 .banner.open { width: 100%; background-image:url(../assets/img/waves.jpg); background-size: cover; animation: Gradient 15s ease infinite; z-index: 3; }
 .banner.open h2 { transform: translateY(-50%) rotate(0deg); }
-.banner h2 {font-family:'Athens'; font-size: 40px; cursor: pointer; }
+.banner h2 {font-family:'Athens'; font-size: 35px; cursor: pointer; }
 h1 {
   width: 645px;
   border-bottom: 1px solid #000;
-  font-size: 90px;
+  font-size: 50px;
   font-family:'Athens';
   font-style: italic;
   text-align: left;
-  padding: 95px 35px 35px 0;
-  margin-bottom: 50px;
+  padding: 95px 20px 20px 0;
+  margin-bottom: 30px;
   float: right;
 }
 h2 {
@@ -172,7 +177,7 @@ h2 {
   left: 0;
   white-space: nowrap;
 }
-.wrapper { height: 600px; display: flex; flex-direction: row; margin: 0 auto; margin-left: 5%; margin-bottom: 80px; box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .2); }
+.wrapper { height: 500px; display: flex; flex-direction: row; margin: 0 auto; margin-left: 5%; margin-bottom: 80px; box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .2); }
 .timeline {
   display: flex;
   flex-direction: column;
@@ -197,10 +202,10 @@ h2 {
   transform: translateX(-20px);
 }
 .timeline p.active { font-size: 20px; color: #01b2b2; right: -25px; text-align: left; }
-.content { background-color: #f2ffff; text-align: left; padding: 100px 210px 0 100px; flex: 1; }
-.content__header { font-size: 70px; font-family: 'Athens'; margin-bottom: 50px; }
-.content__header h3 { font-weight: bold; }
+.content { position: relative; background-color: #f2ffff; text-align: left; padding: 80px 200px 0 50px; flex: 1; }
+.content__header { font-size: 40px; font-family: 'Athens'; margin-bottom: 50px; }
 .content__text { max-width: 590px; font-size: 19px; }
+.content__index { position: absolute; top: -30px; left: -150px; width: 250px; }
 .visual { background-color: #fff; width: 30%; }
 .visual img { width: 100%; height: 100%; object-fit: cover; }
 .inactive { pointer-events: none; color: grey; }
@@ -226,6 +231,17 @@ h2 {
 .pannel.open {
   height: 90%;
   transition: 0.3s height ease-in-out;
+}
+.newsletter input{
+  width: 300px;
+  text-align: left;
+  background: transparent;
+  border: transparent;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
+}
+.newsletter input::placeholder{
+  color: #898c8c;
 }
 @keyframes Gradient {
 	0% {

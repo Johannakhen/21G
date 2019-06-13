@@ -15,75 +15,72 @@
         <p :class="{inactive : inactive == true}" v-on:click="next">suivant &#x2794;</p>
       </div>
       <div class="content">
+        <img class="content__index" v-bind:src="timeline[id].url" alt="">
         <div class="content__header">
-          <h3>{{timeline[id].date}}</h3>
-          <p>{{timeline[id].excerpt}}</p>
+          <div>{{timeline[id].excerpt}}</div>
         </div>
         <div class="content__text">
-          <p>{{timeline[id].text}}</p>
+          <div v-html="timeline[id].text"></div>
         </div>
       </div>
-      <div class="visual">
+      <div class="visual" v-bind:class="`visual__${id}`">
         <img :src="timeline[id].visual" alt="">
       </div>
     </div>
-    <button v-if="loaded">Composez votre parfums</button>
+    <div class="newsletter" v-if="loaded">
+      <input type="text" placeholder="metstonnez@dansnosaffaires.fr">
+      <button>S’inscrire</button>
+    </div>
     <div class="pannel"  v-on:click="leftPanel= true, openPage('concept')"> <p>Le concept</p> </div>
   </section>
 </template>
 
 <script>
+import img1 from '../assets/img/1.png'
+import F2 from '../assets/img/F2.png'
+import F2J from '../assets/img/F2.jpg'
+import img2 from '../assets/img/2.png'
+import img3 from '../assets/img/3.png'
+import img4 from '../assets/img/4.png'
 export default {
   data() {
     return {
       timeline : [
         {
           id: 0,
-          img: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
-          visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          date: '2000',
-          excerpt: 'blablabla',
-          text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum'
+          img: F2J,
+          visual: F2,
+          url: img1,
+          date: 'Tome 1',
+          excerpt: 'D\'où venons-nous ?',
+          text: 'Les principes de  transparence et de responsabilité sont les piliers sur lesquels repose sur notre démarche éthique. </br></br>Notre Maison de création n’utilise que des ingrédients naturels d’exception, dans des compositions simples, référencées parmi les meilleurs « nez » en la matière.</br></br> Nous mettons à votre disposition 30 compositions de haute parfumerie font par nos maîtres parfumeurs uniquement avec des ingrédients naturels de qualité. De centaines de compositions son possible est façonnable par vous, pour vous définir en toutes circonstances et pour correspondre à tous vos désirs.',
         },
         {
           id: 1,
           img: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
           visual: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
-          date: '2001',
-          excerpt: 'blablabla',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum incidunt magni sint doloremque dolor optio repudiandae ratione vel temporibus est officiis exercitationem, explicabo accusantium nisi nihil veritatis esse non!'
+          url: img2,
+          date: 'Tome 2',
+          excerpt: 'Le saviez-vous ?',
+          text: 'Selon les mythes 21 grammes représenterait le poids de notre âme une fois qu’il s’échappe de notre corps. </br></br>Chaque âme étant unique, la fondatrice Johanna Monange à façonner pendant plus de 20 ans le monde de la parfumerie. Au cours de sa carrière elle a appris à designer des fragrances en rapport à l’ADN des plus grandes marques. </br></br>Son but ultime est de partager sa passion et ses connaissances pour aider chaque individu à créer un parfum de qualité en accord avec leur personnalité.'
         },
         {
           id: 2,
           img: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
           visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          date: '2002',
-          excerpt: 'blablabla',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum incidunt magni sint doloremque dolor optio repudiandae ratione vel temporibus est officiis exercitationem, explicabo accusantium nisi nihil veritatis esse non!'
+          url: img3,
+          date: 'Tome 3',
+          excerpt: 'Notre mission',
+          text: '21 Grammes veut déverser le pouvoir mystérieux du 5ème sens et transformer nos clients en véritable designer en parfumerie. </br></br>Pour que chacun puisse forger sa propre fragrance qui représente vraiment son identité. 21 Grammes veut guider les individus à découvrir ce qu’il les rends unique, audacieux, attractif, exceptionnel, élégant et sexy. </br></br>21 Grammes donne le pouvoir à une communauté unique de designer en parfum et leur laisser l\'opportunité de créer leurs propres ”essences of life”. En résumé nous repoussons les limites de la créativité dans l’industrie du parfum.'
         },
         {
           id: 3,
-          img: 'https://media.giphy.com/media/qKNfbNbEN5ylW/giphy.gif',
-          visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          date: '2003',
-          excerpt: 'blablabla',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum incidunt magni sint doloremque dolor optio repudiandae ratione vel temporibus est officiis exercitationem, explicabo accusantium nisi nihil veritatis esse non!'
-        },
-        {
-          id: 4,
-          img: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          visual: 'https://media.giphy.com/media/qKNfbNbEN5ylW/giphy.gif',
-          date: '2004',
-          excerpt: 'blablabla',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum incidunt magni sint doloremque dolor optio repudiandae ratione vel temporibus est officiis exercitationem, explicabo accusantium nisi nihil veritatis esse non!'
-        },
-        {
-          id: 5,
-          img: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          date: '2005',
-          excerpt: 'blablabla',
-          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum incidunt magni sint doloremque dolor optio repudiandae ratione vel temporibus est officiis exercitationem, explicabo accusantium nisi nihil veritatis esse non!'
+          img: F2J,
+          visual: F2,
+          url: img4,
+          date: 'Tome 4',
+          excerpt: 'Gage de qualité',
+          text: 'Les principes de  transparence et de responsabilité sont les piliers sur lesquels repose sur notre démarche éthique. </br></br>Notre Maison de création n’utilise que des ingrédients naturels d’exception, dans des compositions simples, référencées parmi les meilleurs « nez » en la matière. </br></br>Nous mettons à votre disposition 30 compositions de haute parfumerie fait par nos maître parfumeurs uniquement avec des ingrédients naturels de qualité. De centaines de compositions son possible et tout cela façonnable par vous, pour vous définir en toute circonstances et pour correspondre à tous vos désires.'
         },
       ],
       loaded : false,
@@ -145,18 +142,18 @@ export default {
   transition: 0.3s width ease-in-out;
   z-index: 1;
 }
-.banner.open { width: 100%; background-image:url(../assets/img/waves.jpg); background-size: cover; animation: Gradient 15s ease infinite; z-index: 3; }
+.banner.open { width: 100%; background-image:url(../assets/img/waves.jpg); background-size: contain; background-position: -60px 20px; animation: Gradient 15s ease infinite; z-index: 3; }
 .banner.open h2 { transform: translateY(-50%) rotate(0deg); }
-.banner h2 {font-family:'Athens'; font-size: 40px; cursor: pointer; }
+.banner h2 {font-family:'Athens'; font-size: 35px; cursor: pointer; }
 h1 {
   width: 645px;
   border-bottom: 1px solid #000;
-  font-size: 90px;
+  font-size: 50px;
   font-family:'Athens';
   font-style: italic;
   text-align: right;
-  padding: 95px 35px 35px 0;
-  margin-bottom: 50px;
+  padding: 95px 20px 20px 0;
+  margin-bottom: 30px;
 }
 h2 {
   position: relative;
@@ -165,7 +162,7 @@ h2 {
   right: 0;
   white-space: nowrap;
 }
-.wrapper { height: 600px; display: flex; flex-direction: row; margin: 0 auto; margin-right: 5%; margin-bottom: 80px; box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .2); }
+.wrapper { height: 500px; display: flex; flex-direction: row; margin: 0 auto; margin-right: 5%; margin-bottom: 80px; box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .2); }
 .timeline {
   display: flex;
   flex-direction: column;
@@ -174,9 +171,10 @@ h2 {
   position: absolute;
   width: 100px;
   height: auto;
+  z-index: 1;
 }
-.timeline img { height: 100px; width: 100px; object-fit: cover; cursor: pointer; transition: 0.3s all ease-in-out; filter: grayscale(1); }
-.timeline__holder { position: relative; height: 100px; width: 100px; }
+.timeline img { height: 125px; width: 100px; object-fit: cover; cursor: pointer; transition: 0.3s all ease-in-out; filter: grayscale(1); }
+.timeline__holder { position: relative; height: 125px; width: 100px; }
 .timeline__holder p {
   top: 50%;
   position: absolute;
@@ -188,13 +186,22 @@ h2 {
   filter: none;
   width: 120px;
 }
-.timeline p.active { font-size: 20px; color: #01b2b2; right: -65px; }
-.content { background-color: #fff; text-align: left; padding: 100px 0 100px 250px; flex: 1; }
-.content__header { font-size: 60px; font-family: 'Athens'; margin-bottom: 50px; }
-.content__header h3 { font-weight: bold; }
-.content__text { max-width: 450px; font-size: 18px; }
+.timeline p.active { font-size: 20px; color: #01b2b2; right: -70px; }
+.content { position: relative; background-color: #fff; text-align: left; padding: 80px 0 50px 245px; flex: 1; }
+.content__header { font-size: 40px; font-family: 'Athens'; margin-bottom: 50px; }
+.content__text { max-width: 500px; font-size: 18px; }
+.content__text p { margin-bottom: 20px; }
+.content__index { position: absolute; top: -30px; right: -100px; width: 250px; z-index: 1; }
 .visual { background-color: #fff; width: 30%; }
 .visual img { width: 100%; height: 100%; object-fit: cover; }
+.visual__3 { position:relative; width: 35%; }
+.visual__3 img {
+  width: auto;
+  top: -35px;
+  position: absolute;
+  right: -110px;
+  height: 535px;
+}
 .inactive { pointer-events: none; color: grey; }
 .arrow {
   display: none;
@@ -214,6 +221,17 @@ h2 {
   font-family: 'Athens';
   font-size: 32px;
   background-color: #fff;
+}
+.newsletter input{
+  width: 300px;
+  text-align: left;
+  background: transparent;
+  border: transparent;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
+}
+.newsletter input::placeholder{
+  color: #898c8c;
 }
 .pannel.open {
   height: 90%;

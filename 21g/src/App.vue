@@ -3,9 +3,6 @@
     <div class="main-content" role="main">
       <header>
         <img src="./assets/logo.png" alt="" v-on:click="$router.push('/')">
-        <div class="lang">
-           <span>UK | <strong>FR</strong></span>
-        </div>
       </header>
       <router-view/>
     </div>
@@ -28,29 +25,19 @@ export default {
 }
 header {
   position: absolute;
-  width: -webkit-fill-available;
-  top: 37px;
+  top: 20px;
   display: flex !important;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  margin: 0 150px !important;
+  margin: 0 90px !important;
   z-index: 2;
 }
+header img { cursor: pointer; }
 @media screen and (max-width: 920px) {
   header {
     top: 8px;
     margin: 0 20px!important;
   }
-}
-header img { cursor: pointer; }
-.lang {
-  right: 50px;
-  font-size: 20px;
-  font-style: italic;
-  cursor: pointer;
-}
-.lang strong {
-  font-weight: bold;
 }
 </style>

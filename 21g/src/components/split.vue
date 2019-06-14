@@ -111,8 +111,8 @@ h2 {
   .split__right { top: auto; bottom: 0; }
   .split:hover { width: 100%; }
   .inner { width: 420px; padding: 0 50px;}
-  .inner p { padding: 0 20px; margin-bottom: 10px; }
-  h2 { font-size: 60px; }
+  .inner p { padding: 0 20px; margin: 0 20px 10px; font-size: 16px; }
+  h2 { font-size: 40px; }
   .split.close { height: 15%; width: 100%; }
   .split__left.close h2 { transform: rotate(0deg); }
   .split.open { width: 100%; height: 85%; }

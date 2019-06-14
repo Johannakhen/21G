@@ -54,6 +54,7 @@ import F3 from '../assets/img/F3.jpg'
 import F4 from '../assets/img/F4.jpg'
 import L1 from '../assets/img/L1.png'
 import L1J from '../assets/img/L1.jpg'
+import M1 from '../assets/img/M1.jpg'
 
 
 export default {
@@ -89,8 +90,8 @@ export default {
         },
         {
           id: 3,
-          img: L1J,
-          visual: L1,
+          img: M1,
+          visual: M1,
           url: img4,
           date: 'Phase 4',
           excerpt: 'Recevez votre kit 21 grammes',

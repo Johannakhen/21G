@@ -36,7 +36,7 @@
       <button v-on:click="msg= true">S’inscrire</button>
       <p v-if="msg">Votre inscription à été prise en compte</p>
     </div>
-    <div class="pannel"  v-on:click="leftPanel= true, openPage('concept')"> <p>Le concept</p> </div>
+    <div class="pannel" v-on:click="leftPanel= true, openPage('concept')"> <p>Le concept</p> </div>
   </section>
 </template>
 
@@ -44,17 +44,20 @@
 import img1 from '../assets/img/1.png'
 import F2 from '../assets/img/F2.png'
 import F2J from '../assets/img/F2.jpg'
+import M1 from '../assets/img/M1.jpg'
 import img2 from '../assets/img/2.png'
 import img3 from '../assets/img/3.png'
 import img4 from '../assets/img/4.png'
+import F3 from '../assets/img/F3.jpg'
+import F4 from '../assets/img/F4.jpg'
 export default {
   data() {
     return {
       timeline : [
         {
           id: 0,
-          img: F2J,
-          visual: F2,
+          img: F4,
+          visual: F4,
           url: img1,
           date: 'Tome 1',
           excerpt: 'D\'où venons-nous ?',
@@ -62,8 +65,8 @@ export default {
         },
         {
           id: 1,
-          img: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
-          visual: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
+          img: M1,
+          visual: M1,
           url: img2,
           date: 'Tome 2',
           excerpt: 'Le saviez-vous ?',
@@ -71,8 +74,8 @@ export default {
         },
         {
           id: 2,
-          img: 'https://media.giphy.com/media/l1AsBpiFN5AowkYda/giphy.gif',
-          visual: 'https://media.giphy.com/media/l0MYxqKEmJoL150TC/giphy.gif',
+          img: F3,
+          visual: F3,
           url: img3,
           date: 'Tome 3',
           excerpt: 'Notre mission',

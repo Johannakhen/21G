@@ -155,6 +155,7 @@ export default {
   background-size: cover;
   transition: 0.3s width ease-in-out;
   z-index: 1;
+  cursor: pointer;
 }
 .banner.open { width: 100%; background-image:url(../assets/img/waves.jpg); background-size: contain; background-position: -60px 20px; animation: Gradient 15s ease infinite; z-index: 3; }
 .banner.open h2 { transform: translateY(-50%) rotate(0deg); }

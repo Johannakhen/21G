@@ -67,7 +67,7 @@ export default {
           visual: H1,
           url: img1,
           date: 'Phase 1',
-          excerpt: 'Effectuez le test de personnalité et sélectionnez votre scénario',
+          excerpt: 'Effectuez le test de personnalité',
           text: 'Après avoir passé notre test de personnalité élaboré et validé par des psychologues, trois scénarios vous seront proposés.</br></br> Vous devrez choisir l’un d’entre eux, dans lequel vous allez devoir réaliser des missions. Chaque scénario à sa thématique, il y aura une sélection d’image pour déterminer vos goûts personnels, des prises de photos sur votre environnement.</br></br>Choisissez la thématique sur laquelle vous êtes le plus à l’aise et laissez vous guider !</br></br>'
         },
         {
@@ -103,7 +103,7 @@ export default {
           visual: L1,
           url: img5,
           date: 'Phase 5',
-          excerpt: 'Participez au phénomène 21 grammes et partagez votre expérience au monde entier.',
+          excerpt: 'Participez au phénomène 21 grammes',
           text: 'Faites découvrir à tout le monde qu’il est maintenant possible de confectionner soi-même son parfum, la brume adéquate à chaque situation de votre histoire !</br></br> Gagnez des points grâce à vos achats, convertissez les en réductions, bons plans... </br></br>Partagez votre aventure sur les réseaux sociaux tels de Facebook, Instagram… Profitez en pour devenir garant de notre marque !'
         },
       ],
@@ -206,7 +206,7 @@ h2 {
   flex-direction: column;
   right: 0;
   align-items: self-start;
-  position: absolute;
+  position: relative;
   width: 100px;
   height: auto;
 }
@@ -225,7 +225,7 @@ h2 {
   transform: translateX(-20px);
 }
 .timeline p.active { font-size: 20px; color: #01b2b2; right: -25px; text-align: left; }
-.content { position: relative; background-color: #fff; text-align: left; padding: 80px 200px 0 50px; flex: 1; }
+.content { position: relative; background-color: #fff; text-align: left; padding: 80px 100px 0 50px; flex: 1; }
 .content__header { font-size: 40px; font-family: 'Athens'; margin-bottom: 50px; }
 .content__text { max-width: 590px; font-size: 19px; }
 .content__index { position: absolute; top: -30px; left: -150px; width: 250px; }
